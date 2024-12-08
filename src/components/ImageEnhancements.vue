@@ -216,7 +216,7 @@ export default {
 
 <style scoped>
 .image-enhancements-Preview {
-  background: #ffff url('../assets/sample.jpg') center center/cover no-repeat scroll;
+  background: #ffff url('/assets/sample.jpg') center center/cover no-repeat scroll;
   width: 19rem;
   height: 16rem;
 }
