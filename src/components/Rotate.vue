@@ -73,13 +73,12 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box">
         <div class="rotate-preview" :style="rotatePreview">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi cum
-          voluptas autem officiis suscipit eius distinctio, porro quibusdam
-          dolore quae saepe ipsum iste necessitatibus sunt quisquam rerum, unde
-          vel eveniet impedit ratione soluta recusandae? Voluptas dolor ipsam
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi cum voluptas autem officiis
+          suscipit eius distinctio, porro quibusdam dolore quae saepe ipsum iste necessitatibus sunt
+          quisquam rerum, unde vel eveniet impedit ratione soluta recusandae? Voluptas dolor ipsam
           aspernatur excepturi porro!
         </div>
       </div>
@@ -90,11 +89,11 @@
   </div>
 </template>
 <script>
-import { ref, computed, watch, onMounted } from "vue";
-import SubHeader from "./SubHeader.vue";
+import { ref, computed, watch, onMounted } from 'vue'
+import SubHeader from './SubHeader.vue'
 
 export default {
-  emits: ["rotateEmit"],
+  emits: ['rotateEmit'],
   props: {
     rotateProp: {
       type: Object,
@@ -102,85 +101,85 @@ export default {
     },
   },
   setup(props, ctx) {
-    const rotate_type = ref("2D");
-    const rotate_types = ["2D", "3D"];
+    const rotate_type = ref('2D')
+    const rotate_types = ['2D', '3D']
 
     // Initialize numeric refs
-    const rotate_angle = ref();
-    const rotate_angle_x = ref();
-    const rotate_angle_y = ref();
-    const rotate_angle_z = ref();
+    const rotate_angle = ref()
+    const rotate_angle_x = ref()
+    const rotate_angle_y = ref()
+    const rotate_angle_z = ref()
     const is3D = computed(() => {
       return (
-        rotate_angle_x.value !== "" &&
-        rotate_angle_y.value !== "" &&
-        rotate_angle_z.value !== "" &&
+        rotate_angle_x.value !== '' &&
+        rotate_angle_y.value !== '' &&
+        rotate_angle_z.value !== '' &&
         rotate_angle_x.value !== undefined &&
         rotate_angle_y.value !== undefined &&
         rotate_angle_z.value !== undefined
-      );
-    });
+      )
+    })
     const rotatePreview = computed(() => {
-      return rotate_type.value === "2D"
+      return rotate_type.value === '2D'
         ? { transform: `rotate(${rotate_angle.value}deg)` }
         : {
             transform: `rotateX(${rotate_angle_x.value}deg) rotateY(${rotate_angle_y.value}deg) rotateZ(${rotate_angle_z.value}deg)`,
-          };
-    });
+          }
+    })
 
     const rotateCode = computed(() => {
-      if (rotate_angle.value !== "" && rotate_angle.value !== undefined) {
-        return `transform: rotate(${rotate_angle.value}deg);\n`;
+      if (rotate_angle.value !== '' && rotate_angle.value !== undefined) {
+        return `transform: rotate(${rotate_angle.value}deg);\n`
       } else if (is3D.value) {
-        return `transform: rotateX(${rotate_angle_x.value}deg) rotateY(${rotate_angle_y.value}deg) rotateZ(${rotate_angle_z.value}deg);\n`;
-      } else return "";
-    });
+        return `transform: rotateX(${rotate_angle_x.value}deg) rotateY(${rotate_angle_y.value}deg) rotateZ(${rotate_angle_z.value}deg);\n`
+      } else return ''
+    })
     watch(rotateCode, (newVal) => {
-      ctx.emit("rotateEmit", {
-        type: "rotate",
+      ctx.emit('rotateEmit', {
+        type: 'rotate',
         code: newVal,
-      });
-    });
+      })
+    })
 
     // Function to parse and convert string values to numbers
     const parseRotateProp = () => {
       if (props.rotateProp.transform) {
-        const transform = props.rotateProp.transform;
-        const rotate2DMatch = transform.match(/rotate\((\d+)deg\)/);
+        const transform = props.rotateProp.transform
+        const rotate2DMatch = transform.match(/rotate\((\d+)deg\)/)
         const rotate3DMatch = transform.match(
-          /rotateX\((\d+)deg\) rotateY\((\d+)deg\) rotateZ\((\d+)deg\)/
-        );
+          /rotateX\((\d+)deg\) rotateY\((\d+)deg\) rotateZ\((\d+)deg\)/,
+        )
 
         if (rotate2DMatch) {
-          rotate_type.value = "2D";
-          rotate_angle.value = Number(rotate2DMatch[1]);
+          rotate_type.value = '2D'
+          rotate_angle.value = Number(rotate2DMatch[1])
         } else if (rotate3DMatch) {
-          rotate_type.value = "3D";
-          rotate_angle_x.value = Number(rotate3DMatch[1]);
-          rotate_angle_y.value = Number(rotate3DMatch[2]);
-          rotate_angle_z.value = Number(rotate3DMatch[3]);
+          rotate_type.value = '3D'
+          rotate_angle_x.value = Number(rotate3DMatch[1])
+          rotate_angle_y.value = Number(rotate3DMatch[2])
+          rotate_angle_z.value = Number(rotate3DMatch[3])
         }
       }
-    };
+    }
     onMounted(() => {
       if (rotate_angle.value) {
-        rotate_type.value = "2D";
+        rotate_type.value = '2D'
       } else if (is3D.value) {
-        rotate_type.value = "3D";
+        rotate_type.value = '3D'
       }
-    });
+    })
 
     onMounted(() => {
-      parseRotateProp();
-    });
+      parseRotateProp()
+    })
 
     const clearObjItem = () => {
-      rotate_angle.value = "";
-      rotate_angle_x.value = "";
-      rotate_angle_y.value = "";
-      rotate_angle_z.value = "";
-      rotatePreview.value.transform = "";
-    };
+      rotate_angle.value = ''
+      rotate_angle_x.value = ''
+      rotate_angle_y.value = ''
+      rotate_angle_z.value = ''
+      rotatePreview.value.transform = ''
+    }
 
     return {
       rotatePreview,
@@ -192,13 +191,13 @@ export default {
       rotate_angle_y,
       rotate_angle_z,
       clearObjItem,
-    };
+    }
   },
 
   components: {
     SubHeader,
   },
-};
+}
 </script>
 
 <style scoped>

@@ -14,22 +14,20 @@
         />
       </div>
     </div>
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box">
-        <div class="preview" :style="visibilityPreview">
-          This box is visible!
-        </div>
+        <div class="preview" :style="visibilityPreview">This box is visible!</div>
       </div>
       <div class="code-box">{{ visibilityCode }}</div>
     </div>
   </div>
 </template>
 <script>
-import { ref, computed, watch } from "vue";
-import SubHeader from "./SubHeader.vue";
+import { ref, computed, watch } from 'vue'
+import SubHeader from './SubHeader.vue'
 
 export default {
-  emits: ["visibilityEmit"],
+  emits: ['visibilityEmit'],
   props: {
     visibilityProp: {
       type: Object,
@@ -37,40 +35,40 @@ export default {
     },
   },
   setup(props, ctx) {
-    const visibility_visibility = ref("");
-    const visibility_visibilitys = ["", "visible", "hidden"];
+    const visibility_visibility = ref('')
+    const visibility_visibilitys = ['', 'visible', 'hidden']
     const visibilityPreview = computed(() => {
       return {
         visibility: `${visibility_visibility.value}`,
-      };
-    });
+      }
+    })
     const visibilityCode = computed(() => {
       if (visibility_visibility.value) {
-        return `visibility:  ${visibility_visibility.value};\n`;
-      } else return "";
-    });
+        return `visibility:  ${visibility_visibility.value};\n`
+      } else return ''
+    })
 
     watch(visibilityCode, (newVal) => {
-      ctx.emit("visibilityEmit", { type: "visibility", code: newVal });
-    });
-    visibility_visibility.value = props.visibilityProp.visibility;
+      ctx.emit('visibilityEmit', { type: 'visibility', code: newVal })
+    })
+    visibility_visibility.value = props.visibilityProp.visibility
 
     const clearObjItem = () => {
-      visibility_visibility.value = "";
-    };
+      visibility_visibility.value = ''
+    }
     return {
       visibilityPreview,
       visibilityCode,
       visibility_visibility,
       visibility_visibilitys,
       clearObjItem,
-    };
+    }
   },
 
   components: {
     SubHeader,
   },
-};
+}
 </script>
 
 <style scoped></style>

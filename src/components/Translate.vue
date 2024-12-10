@@ -46,13 +46,12 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box">
         <div class="translate-preview" :style="translatePreview">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi cum
-          voluptas autem officiis suscipit eius distinctio, porro quibusdam
-          dolore quae saepe ipsum iste necessitatibus sunt quisquam rerum, unde
-          vel eveniet impedit ratione soluta recusandae? Voluptas dolor ipsam
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi cum voluptas autem officiis
+          suscipit eius distinctio, porro quibusdam dolore quae saepe ipsum iste necessitatibus sunt
+          quisquam rerum, unde vel eveniet impedit ratione soluta recusandae? Voluptas dolor ipsam
           aspernatur excepturi porro!
         </div>
       </div>
@@ -61,11 +60,11 @@
   </div>
 </template>
 <script>
-import { ref, computed, watch, onMounted } from "vue";
-import SubHeader from "./SubHeader.vue";
+import { ref, computed, watch, onMounted } from 'vue'
+import SubHeader from './SubHeader.vue'
 
 export default {
-  emits: ["translateEmit"],
+  emits: ['translateEmit'],
   props: {
     translateProp: {
       type: Object,
@@ -73,95 +72,93 @@ export default {
     },
   },
   setup(props, ctx) {
-    const translate_x = ref("");
-    const translate_y = ref("");
-    const translate_x_unitType = ref("");
+    const translate_x = ref('')
+    const translate_y = ref('')
+    const translate_x_unitType = ref('')
     const translate_x_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const translate_y_unitType = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const translate_y_unitType = ref('')
     const translate_y_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
     const translatePreview = computed(() => {
       return {
         transform: `translate(${translate_x.value}${translate_x_unitType.value}, ${translate_y.value}${translate_y_unitType.value})`,
-      };
-    });
+      }
+    })
     const translateCode = computed(() => {
       if (
-        translate_x.value !== "" &&
-        translate_x_unitType.value !== "" &&
-        translate_y.value !== "" &&
-        translate_y_unitType.value !== ""
+        translate_x.value !== '' &&
+        translate_x_unitType.value !== '' &&
+        translate_y.value !== '' &&
+        translate_y_unitType.value !== ''
       ) {
-        return `transform: translate(${translate_x.value}${translate_x_unitType.value}, ${translate_y.value}${translate_y_unitType.value});\n`;
+        return `transform: translate(${translate_x.value}${translate_x_unitType.value}, ${translate_y.value}${translate_y_unitType.value});\n`
       } else {
-        return null;
+        return null
       }
-    });
+    })
 
     watch(translateCode, (newVal) => {
-      ctx.emit("translateEmit", {
-        type: "translate",
+      ctx.emit('translateEmit', {
+        type: 'translate',
         code: newVal,
-      });
-    });
+      })
+    })
 
     const parseTranslateProp = () => {
       if (props.translateProp.transform) {
-        const transform = props.translateProp.transform;
-        const translateMatch = transform.match(
-          /translate\((-?\d+)([a-z%]*),\s*(-?\d+)([a-z%]*)\)/
-        );
+        const transform = props.translateProp.transform
+        const translateMatch = transform.match(/translate\((-?\d+)([a-z%]*),\s*(-?\d+)([a-z%]*)\)/)
         if (translateMatch) {
-          translate_x.value = translateMatch[1] || "";
-          translate_x_unitType.value = translateMatch[2] || "";
-          translate_y.value = translateMatch[3] || "";
-          translate_y_unitType.value = translateMatch[4] || "";
+          translate_x.value = translateMatch[1] || ''
+          translate_x_unitType.value = translateMatch[2] || ''
+          translate_y.value = translateMatch[3] || ''
+          translate_y_unitType.value = translateMatch[4] || ''
         }
       }
-    };
+    }
     onMounted(() => {
-      parseTranslateProp();
-    });
+      parseTranslateProp()
+    })
     const clearObjItem = () => {
-      translate_x.value = "";
-      translate_y.value = "";
-      translate_x_unitType.value = "";
-      translate_y_unitType.value = "";
-      translatePreview.value.transform = "";
-    };
+      translate_x.value = ''
+      translate_y.value = ''
+      translate_x_unitType.value = ''
+      translate_y_unitType.value = ''
+      translatePreview.value.transform = ''
+    }
 
     return {
       translatePreview,
@@ -173,12 +170,12 @@ export default {
       translate_y_unitType,
       translate_y_unitTypes,
       clearObjItem,
-    };
+    }
   },
   components: {
     SubHeader,
   },
-};
+}
 </script>
 
 <style scoped>

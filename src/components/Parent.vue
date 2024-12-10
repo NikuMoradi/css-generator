@@ -645,7 +645,7 @@ import { ref, watch, reactive, provide } from 'vue'
 @media (max-width: 1023px) {
   :deep(.preview-box) {
     width: 95%;
-    margin: 1.5rem auto;
+    margin: 2.7rem auto;
   }
   :deep(.code-box) {
     width: 95%;

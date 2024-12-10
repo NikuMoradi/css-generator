@@ -35,13 +35,12 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box">
         <div class="skew-preview" :style="skewPreview">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi cum
-          voluptas autem officiis suscipit eius distinctio, porro quibusdam
-          dolore quae saepe ipsum iste necessitatibus sunt quisquam rerum, unde
-          vel eveniet impedit ratione soluta recusandae? Voluptas dolor ipsam
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi cum voluptas autem officiis
+          suscipit eius distinctio, porro quibusdam dolore quae saepe ipsum iste necessitatibus sunt
+          quisquam rerum, unde vel eveniet impedit ratione soluta recusandae? Voluptas dolor ipsam
           aspernatur excepturi porro!
         </div>
       </div>
@@ -50,11 +49,11 @@
   </div>
 </template>
 <script>
-import { ref, computed, watch, onMounted } from "vue";
-import SubHeader from "./SubHeader.vue";
+import { ref, computed, watch, onMounted } from 'vue'
+import SubHeader from './SubHeader.vue'
 
 export default {
-  emits: ["skewEmit"],
+  emits: ['skewEmit'],
   props: {
     skewProp: {
       type: Object,
@@ -62,50 +61,50 @@ export default {
     },
   },
   setup(props, ctx) {
-    const skew_x = ref();
-    const skew_y = ref();
+    const skew_x = ref()
+    const skew_y = ref()
     const skewPreview = computed(() => {
       return {
         transform: `skew(${skew_x.value}deg, ${skew_y.value}deg)`,
-      };
-    });
+      }
+    })
     const skewCode = computed(() => {
       if (
-        skew_x.value !== "" &&
-        skew_y.value !== "" &&
+        skew_x.value !== '' &&
+        skew_y.value !== '' &&
         skew_x.value !== undefined &&
         skew_y.value !== undefined
       ) {
-        return `transform: skew(${skew_x.value}deg, ${skew_y.value}deg);\n`;
-      } else return "";
-    });
+        return `transform: skew(${skew_x.value}deg, ${skew_y.value}deg);\n`
+      } else return ''
+    })
 
     watch(skewCode, (newVal) => {
-      ctx.emit("skewEmit", {
-        type: "skew",
+      ctx.emit('skewEmit', {
+        type: 'skew',
         code: newVal,
-      });
-    });
+      })
+    })
 
     const parseSkewProp = () => {
       if (props.skewProp.transform) {
-        const transform = props.skewProp.transform;
-        const skewMatch = transform.match(/skew\((-?\d+)deg,\s*(-?\d+)deg\)/);
+        const transform = props.skewProp.transform
+        const skewMatch = transform.match(/skew\((-?\d+)deg,\s*(-?\d+)deg\)/)
         if (skewMatch) {
-          skew_x.value = Number(skewMatch[1]);
-          skew_y.value = Number(skewMatch[2]);
+          skew_x.value = Number(skewMatch[1])
+          skew_y.value = Number(skewMatch[2])
         }
       }
-    };
+    }
 
     onMounted(() => {
-      parseSkewProp();
-    });
+      parseSkewProp()
+    })
     const clearObjItem = () => {
-      skew_x.value = "";
-      skew_y.value = "";
-      skewPreview.value.transform = "";
-    };
+      skew_x.value = ''
+      skew_y.value = ''
+      skewPreview.value.transform = ''
+    }
 
     return {
       skewPreview,
@@ -113,12 +112,12 @@ export default {
       skew_x,
       skew_y,
       clearObjItem,
-    };
+    }
   },
   components: {
     SubHeader,
   },
-};
+}
 </script>
 
 <style scoped>

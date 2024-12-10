@@ -34,13 +34,12 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box">
         <div class="scale-preview" :style="scalePreview">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi cum
-          voluptas autem officiis suscipit eius distinctio, porro quibusdam
-          dolore quae saepe ipsum iste necessitatibus sunt quisquam rerum, unde
-          vel eveniet impedit ratione soluta recusandae? Voluptas dolor ipsam
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi cum voluptas autem officiis
+          suscipit eius distinctio, porro quibusdam dolore quae saepe ipsum iste necessitatibus sunt
+          quisquam rerum, unde vel eveniet impedit ratione soluta recusandae? Voluptas dolor ipsam
           aspernatur excepturi porro!
         </div>
       </div>
@@ -49,11 +48,11 @@
   </div>
 </template>
 <script>
-import { ref, computed, watch, onMounted } from "vue";
-import SubHeader from "./SubHeader.vue";
+import { ref, computed, watch, onMounted } from 'vue'
+import SubHeader from './SubHeader.vue'
 
 export default {
-  emits: ["scaleEmit"],
+  emits: ['scaleEmit'],
   props: {
     scaleProp: {
       type: Object,
@@ -61,51 +60,49 @@ export default {
     },
   },
   setup(props, ctx) {
-    const scale_x = ref();
-    const scale_y = ref();
+    const scale_x = ref()
+    const scale_y = ref()
     const scalePreview = computed(() => {
       return {
         transform: `scale(${scale_x.value}, ${scale_y.value})`,
-      };
-    });
+      }
+    })
     const scaleCode = computed(() => {
       if (
-        scale_x.value !== "" &&
+        scale_x.value !== '' &&
         scale_x.value !== undefined &&
-        scale_y.value !== "" &&
+        scale_y.value !== '' &&
         scale_y.value !== undefined
       ) {
-        return `transform: scale(${scale_x.value}, ${scale_y.value});\n`;
-      } else return "";
-    });
+        return `transform: scale(${scale_x.value}, ${scale_y.value});\n`
+      } else return ''
+    })
 
     watch(scaleCode, (newVal) => {
-      ctx.emit("scaleEmit", {
-        type: "scale",
+      ctx.emit('scaleEmit', {
+        type: 'scale',
         code: newVal,
-      });
-    });
+      })
+    })
 
     const parseScaleProp = () => {
       if (props.scaleProp.transform) {
-        const transform = props.scaleProp.transform;
-        const scaleMatch = transform.match(
-          /scale\((\d+(\.\d+)?),\s*(\d+(\.\d+)?)\)/
-        );
+        const transform = props.scaleProp.transform
+        const scaleMatch = transform.match(/scale\((\d+(\.\d+)?),\s*(\d+(\.\d+)?)\)/)
         if (scaleMatch) {
-          scale_x.value = Number(scaleMatch[1]);
-          scale_y.value = Number(scaleMatch[3]);
+          scale_x.value = Number(scaleMatch[1])
+          scale_y.value = Number(scaleMatch[3])
         }
       }
-    };
+    }
     onMounted(() => {
-      parseScaleProp();
-    });
+      parseScaleProp()
+    })
     const clearObjItem = () => {
-      scale_x.value = "";
-      scale_y.value = "";
-      scalePreview.value.transform = "";
-    };
+      scale_x.value = ''
+      scale_y.value = ''
+      scalePreview.value.transform = ''
+    }
 
     return {
       scalePreview,
@@ -113,13 +110,13 @@ export default {
       scale_x,
       scale_y,
       clearObjItem,
-    };
+    }
   },
 
   components: {
     SubHeader,
   },
-};
+}
 </script>
 
 <style scoped>

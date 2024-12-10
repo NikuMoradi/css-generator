@@ -106,7 +106,7 @@
       </div>
     </div>
 
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box"></div>
       <div class="code-box">
         <q-scroll-area style="height: 4rem"> {{ positionCode }}</q-scroll-area>
@@ -115,11 +115,11 @@
   </div>
 </template>
 <script>
-import { ref, computed, watch, onMounted } from "vue";
-import SubHeader from "./SubHeader.vue";
+import { ref, computed, watch, onMounted } from 'vue'
+import SubHeader from './SubHeader.vue'
 
 export default {
-  emits: ["positionEmit"],
+  emits: ['positionEmit'],
   props: {
     positionProp: {
       type: Object,
@@ -127,96 +127,89 @@ export default {
     },
   },
   setup(props, ctx) {
-    const position_position = ref("");
-    const position_positions = [
-      "",
-      "static",
-      "absolute",
-      "fixed",
-      "relative",
-      "sticky",
-    ];
-    const position_top = ref("");
-    const position_right = ref("");
-    const position_bottom = ref("");
-    const position_left = ref("");
-    const position_top_unitType = ref("");
+    const position_position = ref('')
+    const position_positions = ['', 'static', 'absolute', 'fixed', 'relative', 'sticky']
+    const position_top = ref('')
+    const position_right = ref('')
+    const position_bottom = ref('')
+    const position_left = ref('')
+    const position_top_unitType = ref('')
     const position_top_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const position_right_unitType = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const position_right_unitType = ref('')
     const position_right_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const position_bottom_unitType = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const position_bottom_unitType = ref('')
     const position_bottom_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const position_left_unitType = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const position_left_unitType = ref('')
     const position_left_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const position_zIndex = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const position_zIndex = ref('')
     // const positionPreview = computed(() => {
     //   return {
     //     position: `${position_position.value}`,
@@ -228,83 +221,83 @@ export default {
     //   };
     // });
     const positionCode = computed(() => {
-      let code = "";
+      let code = ''
       if (position_position.value) {
-        code += `position: ${position_position.value};\n`;
+        code += `position: ${position_position.value};\n`
       }
       if (position_top.value && position_top_unitType.value) {
-        code += `top: ${position_top.value}${position_top_unitType.value};\n`;
+        code += `top: ${position_top.value}${position_top_unitType.value};\n`
       }
       if (position_right.value && position_right_unitType.value) {
-        code += `right: ${position_right.value}${position_right_unitType.value};\n`;
+        code += `right: ${position_right.value}${position_right_unitType.value};\n`
       }
       if (position_bottom.value && position_bottom_unitType.value) {
-        code += `bottom: ${position_bottom.value}${position_bottom_unitType.value};\n`;
+        code += `bottom: ${position_bottom.value}${position_bottom_unitType.value};\n`
       }
       if (position_left.value && position_left_unitType.value) {
-        code += `left: ${position_left.value}${position_left_unitType.value};\n`;
+        code += `left: ${position_left.value}${position_left_unitType.value};\n`
       }
       if (position_zIndex.value) {
-        code += `z-index: ${position_zIndex.value};\n`;
+        code += `z-index: ${position_zIndex.value};\n`
       }
-      return code;
-    });
+      return code
+    })
 
     watch(positionCode, (newVal) => {
-      ctx.emit("positionEmit", { type: "position", code: newVal });
-    });
+      ctx.emit('positionEmit', { type: 'position', code: newVal })
+    })
     const parseValueAndUnit = (value) => {
-      const match = value.match(/^(\d+)([a-z%]*)$/);
-      return match ? [match[1], match[2]] : [value, ""];
-    };
+      const match = value.match(/^(\d+)([a-z%]*)$/)
+      return match ? [match[1], match[2]] : [value, '']
+    }
 
     const parsePositionProp = () => {
       if (props.positionProp) {
         if (props.positionProp.position) {
-          position_position.value = props.positionProp.position;
+          position_position.value = props.positionProp.position
         }
         if (props.positionProp.top) {
-          const [value, unit] = parseValueAndUnit(props.positionProp.top);
-          position_top.value = value;
-          position_top_unitType.value = unit;
+          const [value, unit] = parseValueAndUnit(props.positionProp.top)
+          position_top.value = value
+          position_top_unitType.value = unit
         }
         if (props.positionProp.right) {
-          const [value, unit] = parseValueAndUnit(props.positionProp.right);
-          position_right.value = value;
-          position_right_unitType.value = unit;
+          const [value, unit] = parseValueAndUnit(props.positionProp.right)
+          position_right.value = value
+          position_right_unitType.value = unit
         }
         if (props.positionProp.bottom) {
-          const [value, unit] = parseValueAndUnit(props.positionProp.bottom);
-          position_bottom.value = value;
-          position_bottom_unitType.value = unit;
+          const [value, unit] = parseValueAndUnit(props.positionProp.bottom)
+          position_bottom.value = value
+          position_bottom_unitType.value = unit
         }
         if (props.positionProp.left) {
-          const [value, unit] = parseValueAndUnit(props.positionProp.left);
-          position_left.value = value;
-          position_left_unitType.value = unit;
+          const [value, unit] = parseValueAndUnit(props.positionProp.left)
+          position_left.value = value
+          position_left_unitType.value = unit
         }
-        if (props.positionProp["z-index"]) {
-          position_zIndex.value = props.positionProp["z-index"];
+        if (props.positionProp['z-index']) {
+          position_zIndex.value = props.positionProp['z-index']
         }
       }
-    };
+    }
 
     onMounted(() => {
-      parsePositionProp();
-    });
+      parsePositionProp()
+    })
 
     const clearObjItem = () => {
-      position_position.value = "";
-      position_top.value = "";
-      position_right.value = "";
-      position_bottom.value = "";
-      position_left.value = "";
-      position_top_unitType.value = "";
-      position_right_unitType.value = "";
-      position_bottom_unitType.value = "";
-      position_left_unitType.value = "";
-      position_zIndex.value = "";
-    };
+      position_position.value = ''
+      position_top.value = ''
+      position_right.value = ''
+      position_bottom.value = ''
+      position_left.value = ''
+      position_top_unitType.value = ''
+      position_right_unitType.value = ''
+      position_bottom_unitType.value = ''
+      position_left_unitType.value = ''
+      position_zIndex.value = ''
+    }
 
     return {
       // positionPreview,
@@ -325,12 +318,12 @@ export default {
       position_left_unitTypes,
       position_zIndex,
       clearObjItem,
-    };
+    }
   },
   components: {
     SubHeader,
   },
-};
+}
 </script>
 
 <style scoped></style>

@@ -123,7 +123,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box">
         <div class="size-preview" :style="sizePreview"></div>
       </div>
@@ -136,11 +136,11 @@
   </div>
 </template>
 <script>
-import { ref, computed, watch } from "vue";
-import SubHeader from "./SubHeader.vue";
+import { ref, computed, watch } from 'vue'
+import SubHeader from './SubHeader.vue'
 
 export default {
-  emits: ["sizeEmit"],
+  emits: ['sizeEmit'],
   props: {
     sizeProp: {
       type: Object,
@@ -148,127 +148,127 @@ export default {
     },
   },
   setup(props, ctx) {
-    const unitType = ref("");
-    const size_width = ref("");
-    const size_height = ref("");
-    const size_min_width = ref("");
-    const size_min_height = ref("");
-    const size_max_width = ref("");
-    const size_max_height = ref("");
-    const size_width_unitType = ref("");
+    const unitType = ref('')
+    const size_width = ref('')
+    const size_height = ref('')
+    const size_min_width = ref('')
+    const size_min_height = ref('')
+    const size_max_width = ref('')
+    const size_max_height = ref('')
+    const size_width_unitType = ref('')
     const size_width_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const size_height_unitType = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const size_height_unitType = ref('')
     const size_height_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const size_min_width_unitType = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const size_min_width_unitType = ref('')
     const size_min_width_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const size_min_height_unitType = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const size_min_height_unitType = ref('')
     const size_min_height_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const size_max_width_unitType = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const size_max_width_unitType = ref('')
     const size_max_width_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
-    const size_max_height_unitType = ref("");
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
+    const size_max_height_unitType = ref('')
     const size_max_height_unitTypes = [
-      "",
-      "px",
-      "%",
-      "em",
-      "rem",
-      "vw",
-      "vh",
-      "vmin",
-      "vmax",
-      "cm",
-      "mm",
-      "pt",
-      "pc",
-      "ex",
-      "ch",
-      "in",
-    ];
+      '',
+      'px',
+      '%',
+      'em',
+      'rem',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'cm',
+      'mm',
+      'pt',
+      'pc',
+      'ex',
+      'ch',
+      'in',
+    ]
     const sizePreview = computed(() => {
       return {
         width: `${size_width.value}${size_width_unitType.value}`,
@@ -277,91 +277,85 @@ export default {
         maxWidth: `${size_max_width.value}${unitType.value}`,
         minHeight: `${size_min_height.value}${size_max_width_unitType.value}`,
         maxHeight: `${size_max_height.value}${size_max_height_unitType.value}`,
-      };
-    });
+      }
+    })
     const sizeCode = computed(() => {
-      let code = "";
-      if (size_width.value !== "" && size_width_unitType.value !== "") {
-        code += `width: ${size_width.value}${size_width_unitType.value};\n`;
+      let code = ''
+      if (size_width.value !== '' && size_width_unitType.value !== '') {
+        code += `width: ${size_width.value}${size_width_unitType.value};\n`
       }
-      if (size_height.value !== "" && size_height_unitType.value !== "") {
-        code += `height: ${size_height.value}${size_height_unitType.value};\n`;
+      if (size_height.value !== '' && size_height_unitType.value !== '') {
+        code += `height: ${size_height.value}${size_height_unitType.value};\n`
       }
-      if (size_min_width.value !== "" && size_min_width_unitType.value !== "") {
-        code += `min-width: ${size_min_width.value}${size_min_width_unitType.value};\n`;
+      if (size_min_width.value !== '' && size_min_width_unitType.value !== '') {
+        code += `min-width: ${size_min_width.value}${size_min_width_unitType.value};\n`
       }
-      if (
-        size_min_height.value !== "" &&
-        size_min_height_unitType.value !== ""
-      ) {
-        code += `min-height: ${size_min_height.value}${size_min_height_unitType.value};\n`;
+      if (size_min_height.value !== '' && size_min_height_unitType.value !== '') {
+        code += `min-height: ${size_min_height.value}${size_min_height_unitType.value};\n`
       }
-      if (size_max_width.value !== "" && size_max_width_unitType.value !== "") {
-        code += `max-width: ${size_max_width.value}${size_max_width_unitType.value};\n`;
+      if (size_max_width.value !== '' && size_max_width_unitType.value !== '') {
+        code += `max-width: ${size_max_width.value}${size_max_width_unitType.value};\n`
       }
-      if (
-        size_max_height.value !== "" &&
-        size_max_height_unitType.value !== ""
-      ) {
-        code += `max-height: ${size_max_height.value}${size_max_height_unitType.value};\n`;
+      if (size_max_height.value !== '' && size_max_height_unitType.value !== '') {
+        code += `max-height: ${size_max_height.value}${size_max_height_unitType.value};\n`
       }
-      return code;
-    });
+      return code
+    })
     watch(sizeCode, (newVal) => {
-      ctx.emit("sizeEmit", { type: "size", code: newVal });
-    });
+      ctx.emit('sizeEmit', { type: 'size', code: newVal })
+    })
 
     const extractValueAndUnit = (value) => {
-      const match = value.match(/^(\d+)([a-z%]*)$/);
-      return match ? [match[1], match[2]] : ["", ""];
-    };
+      const match = value.match(/^(\d+)([a-z%]*)$/)
+      return match ? [match[1], match[2]] : ['', '']
+    }
 
     // Parsing function
     Object.entries(props.sizeProp).forEach(([key, value]) => {
-      const [numberValue, unitType] = extractValueAndUnit(value);
+      const [numberValue, unitType] = extractValueAndUnit(value)
 
       switch (key) {
-        case "width":
-          size_width.value = numberValue;
-          size_width_unitType.value = unitType;
-          break;
-        case "height":
-          size_height.value = numberValue;
-          size_height_unitType.value = unitType;
-          break;
-        case "min-width":
-          size_min_width.value = numberValue;
-          size_min_width_unitType.value = unitType;
-          break;
-        case "min-height":
-          size_min_height.value = numberValue;
-          size_min_height_unitType.value = unitType;
-          break;
-        case "max-width":
-          size_max_width.value = numberValue;
-          size_max_width_unitType.value = unitType;
-          break;
-        case "max-height":
-          size_max_height.value = numberValue;
-          size_max_height_unitType.value = unitType;
-          break;
+        case 'width':
+          size_width.value = numberValue
+          size_width_unitType.value = unitType
+          break
+        case 'height':
+          size_height.value = numberValue
+          size_height_unitType.value = unitType
+          break
+        case 'min-width':
+          size_min_width.value = numberValue
+          size_min_width_unitType.value = unitType
+          break
+        case 'min-height':
+          size_min_height.value = numberValue
+          size_min_height_unitType.value = unitType
+          break
+        case 'max-width':
+          size_max_width.value = numberValue
+          size_max_width_unitType.value = unitType
+          break
+        case 'max-height':
+          size_max_height.value = numberValue
+          size_max_height_unitType.value = unitType
+          break
       }
-    });
+    })
 
     const clearObjItem = () => {
-      size_width.value = "";
-      size_height.value = "";
-      size_min_width.value = "";
-      size_min_height.value = "";
-      size_max_width.value = "";
-      size_max_height.value = "";
-      size_width_unitType.value = "";
-      size_height_unitType.value = "";
-      size_min_width_unitType.value = "";
-      size_min_height_unitType.value = "";
-      size_max_width_unitType.value = "";
-      size_max_height_unitType.value = "";
-    };
+      size_width.value = ''
+      size_height.value = ''
+      size_min_width.value = ''
+      size_min_height.value = ''
+      size_max_width.value = ''
+      size_max_height.value = ''
+      size_width_unitType.value = ''
+      size_height_unitType.value = ''
+      size_min_width_unitType.value = ''
+      size_min_height_unitType.value = ''
+      size_max_width_unitType.value = ''
+      size_max_height_unitType.value = ''
+    }
 
     return {
       sizePreview,
@@ -385,12 +379,12 @@ export default {
       size_max_height_unitType,
       size_max_height_unitTypes,
       clearObjItem,
-    };
+    }
   },
   components: {
     SubHeader,
   },
-};
+}
 </script>
 
 <style scoped>

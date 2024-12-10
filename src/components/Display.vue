@@ -14,7 +14,7 @@
         />
       </div>
     </div>
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box">
         <div class="preview" :style="displayPreview"></div>
       </div>
@@ -23,11 +23,11 @@
   </div>
 </template>
 <script>
-import { ref, computed, watch } from "vue";
-import SubHeader from "./SubHeader.vue";
+import { ref, computed, watch } from 'vue'
+import SubHeader from './SubHeader.vue'
 
 export default {
-  emits: ["displayEmit"],
+  emits: ['displayEmit'],
   props: {
     displayProp: {
       type: Object,
@@ -35,37 +35,37 @@ export default {
     },
   },
   setup(props, ctx) {
-    const display_display = ref("");
+    const display_display = ref('')
     const display_displays = [
-      "",
-      "block",
-      "none",
-      "contents",
-      "inline",
-      "inline-block",
-      "list-item",
-      "table",
-    ];
+      '',
+      'block',
+      'none',
+      'contents',
+      'inline',
+      'inline-block',
+      'list-item',
+      'table',
+    ]
     const displayPreview = computed(() => {
       return {
         display: `${display_display.value}`,
-      };
-    });
+      }
+    })
     const displayCode = computed(() => {
       if (display_display.value) {
-        return `display: ${display_display.value};\n`;
-      } else return "";
-    });
+        return `display: ${display_display.value};\n`
+      } else return ''
+    })
 
     watch(displayCode, (newVal) => {
-      ctx.emit("displayEmit", { type: "display", code: newVal });
-    });
-    display_display.value = props.displayProp.display;
+      ctx.emit('displayEmit', { type: 'display', code: newVal })
+    })
+    display_display.value = props.displayProp.display
 
     const clearObjItem = () => {
-      display_display.value = "";
-      displayPreview.value.display = "";
-    };
+      display_display.value = ''
+      displayPreview.value.display = ''
+    }
 
     return {
       displayPreview,
@@ -73,13 +73,13 @@ export default {
       display_display,
       display_displays,
       clearObjItem,
-    };
+    }
   },
 
   components: {
     SubHeader,
   },
-};
+}
 </script>
 
 <style scoped></style>

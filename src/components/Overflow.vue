@@ -21,7 +21,7 @@
         />
       </div>
     </div>
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box">
         <div class="overflow-preview" :style="overflowPreview">
           Lorem ipsum dolor sit amet adipisicing elit. Illum?<br />
@@ -42,11 +42,11 @@
   </div>
 </template>
 <script>
-import { ref, computed, watch } from "vue";
-import SubHeader from "./SubHeader.vue";
+import { ref, computed, watch } from 'vue'
+import SubHeader from './SubHeader.vue'
 
 export default {
-  emits: ["overflowEmit"],
+  emits: ['overflowEmit'],
   props: {
     overflowProp: {
       type: Object,
@@ -54,37 +54,37 @@ export default {
     },
   },
   setup(props, ctx) {
-    const overflow_x = ref("");
-    const overflow_xs = ["", "auto", "hidden", "scroll", "visible"];
-    const overflow_y = ref("");
-    const overflow_ys = ["", "auto", "hidden", "scroll", "visible"];
+    const overflow_x = ref('')
+    const overflow_xs = ['', 'auto', 'hidden', 'scroll', 'visible']
+    const overflow_y = ref('')
+    const overflow_ys = ['', 'auto', 'hidden', 'scroll', 'visible']
     const overflowPreview = computed(() => ({
       overflow: overflow_x.value,
       overflowY: overflow_y.value,
-    }));
+    }))
     const overflowCode = computed(() => {
-      let code = "";
+      let code = ''
       if (overflow_x.value) {
-        code += `overflow-x: ${overflow_x.value};\n`;
+        code += `overflow-x: ${overflow_x.value};\n`
       }
       if (overflow_y.value) {
-        code += `overflow-y: ${overflow_y.value};\n`;
+        code += `overflow-y: ${overflow_y.value};\n`
       }
 
-      return code;
-    });
+      return code
+    })
 
     watch(overflowCode, (newVal) => {
-      ctx.emit("overflowEmit", { type: "overflow", code: newVal });
-    });
+      ctx.emit('overflowEmit', { type: 'overflow', code: newVal })
+    })
 
-    overflow_x.value = props.overflowProp["overflow-x"];
-    overflow_y.value = props.overflowProp["overflow-y"];
+    overflow_x.value = props.overflowProp['overflow-x']
+    overflow_y.value = props.overflowProp['overflow-y']
 
     const clearObjItem = () => {
-      overflow_x.value = "";
-      overflow_y.value = "";
-    };
+      overflow_x.value = ''
+      overflow_y.value = ''
+    }
 
     return {
       overflowPreview,
@@ -94,12 +94,12 @@ export default {
       overflow_y,
       overflow_ys,
       clearObjItem,
-    };
+    }
   },
   components: {
     SubHeader,
   },
-};
+}
 </script>
 
 <style scoped>

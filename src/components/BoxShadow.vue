@@ -85,7 +85,7 @@
         </div>
       </q-scroll-area>
     </div>
-    <div class="col-sm-12 col-md-5 q-gutter-y-lg" v-if="$q.screen.gt.sm">
+    <div class="col-xs-12 col-md-5 q-gutter-y-lg">
       <div class="preview-box">
         <div class="preview" :style="boxShadowPreview"></div>
       </div>
