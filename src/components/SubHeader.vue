@@ -24,22 +24,21 @@ export default {
 <style scoped>
 .wrapper {
   display: flex;
-  align-items: baseline;
   gap: 0.7rem;
+  align-items: baseline;
 }
 .title {
   font-size: 1.5rem;
   font-weight: 500;
 }
 .clear-btn {
-  padding: 0.5;
   font-size: 0.7rem;
   background-color: #f8e6e57a;
 }
 @media (max-width: 1024px) {
   .wrapper {
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
   }
 }
 </style>
