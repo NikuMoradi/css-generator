@@ -39,6 +39,7 @@ export default {
 @media (max-width: 1024px) {
   .wrapper {
     justify-content: space-between;
+    align-items: center;
   }
 }
 </style>
