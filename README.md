@@ -1,44 +1,57 @@
-<<<<<<< HEAD
-# css-generator
-=======
-# Quasar App (css-generator)
 
-A Quasar Project
+```markdown
 
-## Install the dependencies
+## **Installation**  
+Clone the repository and install the dependencies:  
+
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/css-generator.git
+
+# Navigate into the project directory
+cd css-generator
+
+# Install dependencies
 yarn
 # or
 npm install
-```
+```  
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+---
+
+## **Development**  
+
+### **Run the App in Development Mode**  
+Start the app with hot-code reloading and error reporting:  
+
 ```bash
 quasar dev
-```
+```  
 
+### **Lint the Files**  
+Lint your project files to maintain code quality:  
 
-### Lint the files
 ```bash
 yarn lint
 # or
 npm run lint
-```
+```  
 
+### **Format the Files**  
+Format the project files to adhere to coding standards:  
 
-### Format the files
 ```bash
 yarn format
 # or
 npm run format
-```
+```  
 
+### **Build for Production**  
+Generate a production-ready build of the application:  
 
-### Build the app for production
 ```bash
 quasar build
-```
+```  
 
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
->>>>>>> 4f644ba (Initialize the project 🚀)
+---
+
