@@ -242,7 +242,7 @@ export default {
     },
   },
   setup(props, ctx) {
-    const activeTab = ref('background')
+    const activeTab = ref('textFormatting')
     provide('usedColors', props.usedColors)
     //-----------------------------Emit to indexPage--------------------------------
     //fill the initial object with child values
