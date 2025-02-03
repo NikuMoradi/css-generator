@@ -283,7 +283,7 @@
       </div>
 
       <div class="code-box">
-        <q-scroll-area style="height: 4rem">
+        <q-scroll-area style="height: 7rem">
           {{ textFormattingCode }}
         </q-scroll-area>
       </div>
